@@ -1,2 +1,7 @@
-package com.aleksnose.hoteru.exception;public class NotFoundException {
+package com.aleksnose.hoteru.exception;
+
+public class NotFoundException extends RuntimeException {
+    public NotFoundException(String message) {
+        super(message);
+    }
 }
