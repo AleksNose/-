@@ -9,12 +9,13 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
-    private String Name;
-    private String Surname;
+    private String name;
+    private String surname;
     private Boolean IsWorker;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.EAGER)

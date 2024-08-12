@@ -12,13 +12,9 @@ public class ComponentsInRoom {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
 
-    @MapKey(name = "IdTargetRoom")
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="IdTargetRoom")
+    @ManyToOne
     private TargetRoom targetRoom;
 
-    @MapKey(name = "IdComponent")
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="IdComponent")
+    @ManyToOne
     private Component component;
 }

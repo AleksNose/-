@@ -18,16 +18,15 @@ public class TargetRoom {
     private int CountPeople;
     private int CountTargetRoom;
 
-    @MapKey(name = "IdHotel")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "IdHotel")
     private Hotel hotel;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "targetRoom", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "targetRoom", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Room> rooms;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "targetRoom", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "targetRoom", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<ComponentsInRoom> componentsInRooms;
 

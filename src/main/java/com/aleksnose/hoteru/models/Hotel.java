@@ -17,12 +17,11 @@ public class Hotel {
     private Integer Id;
     private String Name;
 
-    @MapKey(name = "IdTown")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdTown")
     private Town town;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<TargetRoom> targetRooms;
 

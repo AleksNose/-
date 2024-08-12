@@ -15,8 +15,7 @@ public class Town {
     private Integer Id;
     private String Name;
 
-    @MapKey(name = "IdCountry")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdCountry")
     private Country country;
 

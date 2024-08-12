@@ -13,13 +13,11 @@ public class WorkerInHotel {
     private Integer Id;
     private boolean IsAdmin;
 
-    @MapKey(name = "IdUser")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdUser")
     private User user;
 
-    @MapKey(name = "IdHotel")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdHotel")
     private Hotel hotel;
 }

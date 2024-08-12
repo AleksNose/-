@@ -15,13 +15,11 @@ public class Reservation {
     private LocalDate DateFrom;
     private LocalDate DateTo;
 
-    @MapKey(name = "IdUser")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdUser")
     private User user;
 
-    @MapKey(name = "IdRoom")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdRoom")
     private Room room;
 }

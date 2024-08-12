@@ -16,8 +16,7 @@ public class Room {
     private Integer Id;
     private int NrRoom;
 
-    @MapKey(name = "IdTargetRoom")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name="IdTargetRoom")
     private TargetRoom targetRoom;
 
