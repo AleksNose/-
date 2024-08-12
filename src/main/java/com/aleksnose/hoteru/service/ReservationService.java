@@ -1,5 +1,6 @@
 package com.aleksnose.hoteru.service;
 
+import com.aleksnose.hoteru.exception.NotFoundException;
 import com.aleksnose.hoteru.models.Reservation;
 import com.aleksnose.hoteru.models.TargetRoom;
 import com.aleksnose.hoteru.models.User;
@@ -16,7 +17,7 @@ public class ReservationService {
     }
 
     public Reservation getReservationById(Integer id) {
-        return reservationRepository.findById(id).orElse(null);
+        return reservationRepository.findById(id).orElseThrow(() -> new NotFoundException("Reservation not found with id: " + id));
     }
 
     public TargetRoom getReservationTargetRoom(Integer id) {
