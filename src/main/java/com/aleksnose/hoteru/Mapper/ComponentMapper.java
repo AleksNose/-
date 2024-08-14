@@ -3,7 +3,6 @@ package com.aleksnose.hoteru.Mapper;
 import com.aleksnose.hoteru.DTO.ComponentDTO;
 import com.aleksnose.hoteru.models.Component;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
