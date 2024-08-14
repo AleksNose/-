@@ -1,5 +1,6 @@
 package com.aleksnose.hoteru.service;
 
+import com.aleksnose.hoteru.DTO.ReservationDTO;
 import com.aleksnose.hoteru.exception.NotFoundException;
 import com.aleksnose.hoteru.models.Reservation;
 import com.aleksnose.hoteru.models.TargetRoom;
@@ -10,14 +11,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class ReservationService {
 
-    private ReservationRepository reservationRepository;
+    private ReservationRepository repository;
 
-    public ReservationService(ReservationRepository reservationRepository) {
-        this.reservationRepository = reservationRepository;
+    public ReservationService(ReservationRepository repository) {
+        this.repository = repository;
     }
 
     public Reservation getReservationById(Integer id) {
-        return reservationRepository.findById(id).orElseThrow(() -> new NotFoundException("Reservation not found with id: " + id));
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Reservation not found with id: " + id));
+    }
+
+    public Reservation saveReservation(ReservationDTO reservationDTO)
+    {
+        var reservation = new Reservation();
+
+        return reservation;
     }
 
     public TargetRoom getReservationTargetRoom(Integer id) {

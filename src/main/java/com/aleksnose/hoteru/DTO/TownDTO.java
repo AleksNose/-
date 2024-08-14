@@ -5,7 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ComponentDTO {
+public class TownDTO {
     private Integer Id;
     private String Name;
+    private Integer IdCountry;
 }

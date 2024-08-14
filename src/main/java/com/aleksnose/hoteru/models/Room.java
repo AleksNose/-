@@ -14,6 +14,8 @@ public class Room {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
+
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int NrRoom;
 
     @ManyToOne

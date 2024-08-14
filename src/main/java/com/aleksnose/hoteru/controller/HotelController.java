@@ -6,11 +6,9 @@ import com.aleksnose.hoteru.Mapper.HotelMapper;
 import com.aleksnose.hoteru.Mapper.TargetRoomMapper;
 import com.aleksnose.hoteru.models.User;
 import com.aleksnose.hoteru.service.HotelService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,8 +21,34 @@ public class HotelController {
         this.service = service;
     }
 
+    @GetMapping(path = "/all")
+    public List<HotelDTO> getAllHotels() {
+        var hotels = service.getAllHotels();
+        return hotels.stream().map(HotelMapper.INSTANCE::hotelToHotelDTO).collect(Collectors.toList());
+    }
+
+    @PostMapping()
+    public HotelDTO saveHotel(String name, Integer idTown) {
+        var hotel = service.saveHotel(name, idTown);
+        return HotelMapper.INSTANCE.hotelToHotelDTO(hotel);
+    }
+
+    @PutMapping(path = "/{id}")
+    public HotelDTO modifiedHotel(@PathVariable Integer id, @RequestBody HotelDTO hotelDTO)
+    {
+        var hotel = service.getHotelById(id);
+        service.saveHotel(hotel, hotelDTO);
+
+        return HotelMapper.INSTANCE.hotelToHotelDTO(hotel);
+    }
+
+    @PostMapping(path = "/{id}/rooms")
+    public void addRooms(@PathVariable int id, @PathVariable int countRooms, @PathVariable int countPeopleInRoom) {
+        service.addRoomsByHotel(id, countRooms, countPeopleInRoom);
+    }
+
     @GetMapping(path = "/{id}")
-    public HotelDTO getHotel(@PathVariable Integer id) {
+    public HotelDTO getHotelById(@PathVariable Integer id) {
         var hotel = service.getHotelById(id);
         return HotelMapper.INSTANCE.hotelToHotelDTO(hotel);
     }
