@@ -17,7 +17,7 @@ public class GlobalException {
     }
 
     @ExceptionHandler(BadRequestException.class)
-    public ResponseEntity<?> handleEmployeeBadRequestException(BadRequestException ex, WebRequest request) {
+    public ResponseEntity<?> handleBadRequestException(BadRequestException ex, WebRequest request) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), ex.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
     }
